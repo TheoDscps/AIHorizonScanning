@@ -1,0 +1,65 @@
+[
+  {
+    "titre": "Claude Code reaches 1.0 — autonomous coding agent in the terminal",
+    "lien": "https://www.anthropic.com/claude-code",
+    "date": "Mon, 24 Mar 2026 10:00:00 +0000",
+    "pertinent": true,
+    "score": 9,
+    "raison": "Agent CLI de coding par Anthropic, directement dans le terminal, révolutionne le workflow dev",
+    "categorie": "Agent CLI"
+  },
+  {
+    "titre": "Cursor 2.0 — background agents and multi-repo editing",
+    "lien": "https://cursor.sh/blog/cursor-2",
+    "date": "Mon, 17 Mar 2026 08:00:00 +0000",
+    "pertinent": true,
+    "score": 9,
+    "raison": "Nouvelle version majeure de l'IDE AI-native le plus populaire avec agents en arrière-plan",
+    "categorie": "IDE"
+  },
+  {
+    "titre": "Mistral releases Codestral 2.0 — best open-source coding model",
+    "lien": "https://mistral.ai/news/codestral-2",
+    "date": "Mon, 10 Mar 2026 09:00:00 +0000",
+    "pertinent": true,
+    "score": 8,
+    "raison": "Nouveau LLM open-source spécialisé coding, surpasse GPT-4o sur les benchmarks HumanEval",
+    "categorie": "LLM"
+  },
+  {
+    "titre": "OpenAI Codex CLI beta — ChatGPT as a terminal agent",
+    "lien": "https://openai.com/codex-cli",
+    "date": "Mon, 03 Mar 2026 11:00:00 +0000",
+    "pertinent": true,
+    "score": 8,
+    "raison": "Agent CLI de coding par OpenAI, concurrent direct de Claude Code",
+    "categorie": "Agent CLI"
+  },
+  {
+    "titre": "Windsurf 1.5 — smarter context window for large codebases",
+    "lien": "https://windsurf.ai/blog/1-5",
+    "date": "Mon, 24 Feb 2026 14:00:00 +0000",
+    "pertinent": true,
+    "score": 7,
+    "raison": "Mise à jour de l'IDE AI-native avec meilleure gestion du contexte sur les grands projets",
+    "categorie": "IDE"
+  },
+  {
+    "titre": "n8n 2.0 — AI-native workflow automation with built-in agents",
+    "lien": "https://n8n.io/blog/n8n-2",
+    "date": "Mon, 17 Feb 2026 10:00:00 +0000",
+    "pertinent": true,
+    "score": 7,
+    "raison": "Nouvelle version de l'outil d'automatisation utilisé dans ce pipeline, avec agents IA natifs",
+    "categorie": "Outil"
+  },
+  {
+    "titre": "Show HN: open-source alternative to GitHub Copilot using local LLMs",
+    "lien": "https://github.com/example/local-copilot",
+    "date": "Mon, 10 Feb 2026 16:00:00 +0000",
+    "pertinent": true,
+    "score": 6,
+    "raison": "Alternative open-source à Copilot utilisant des LLMs locaux via Ollama, intéressant pour la vie privée",
+    "categorie": "Outil"
+  }
+]

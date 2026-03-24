@@ -1,0 +1,186 @@
+{
+  "name": "VT - Pipeline RSS IA",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyWeek",
+              "hour": 14,
+              "minute": 0,
+              "weekday": 1
+            }
+          ]
+        },
+        "url": "https://hnrss.org/frontpage"
+      },
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "name": "RSS Feed Trigger",
+      "type": "n8n-nodes-base.rssFeedReadTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "claude-haiku-4-5-20251001",
+          "mode": "list",
+          "cachedResultName": "claude-haiku-4-5-20251001"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Tu es un assistant de veille technologique spécialisé en IA pour la programmation.\n\nAnalyse cet article et réponds UNIQUEMENT par un JSON avec ce format :\n{\n  \"pertinent\": true/false,\n  \"score\": 1-10,\n  \"raison\": \"explication en une phrase\",\n  \"categorie\": \"IDE / Agent CLI / LLM / Outil / Autre\"\n}\n\nEst pertinent si l'article parle de : IDE AI-native (Cursor, Windsurf...), agents CLI (Claude Code, Codex...), LLMs pour le coding, outils d'automatisation dev par IA.\n\nTitre : {{ $json.title }}\nContenu : {{ $json.contentSnippet }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "name": "Message a model",
+      "type": "n8n-nodes-base.anthropic",
+      "typeVersion": 1,
+      "position": [470, 300],
+      "credentials": {
+        "anthropicApi": {
+          "id": "1",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const claudeText = $input.item.json.content[0].text;\n\n// Enlève les backticks markdown si présents (```json ... ```)\nconst cleaned = claudeText.replace(/```json|```/g, '').trim();\n\n// Parse le JSON retourné par Claude\nconst parsed = JSON.parse(cleaned);\n\n// Récupère les données RSS depuis le nœud source\nconst rss = $('RSS Feed Trigger').item.json;\n\nreturn {\n  json: {\n    titre: rss.title ?? '',\n    lien: rss.link ?? '',\n    date: rss.pubDate ?? '',\n    pertinent: parsed.pertinent,\n    score: Number(parsed.score),\n    raison: parsed.raison,\n    categorie: parsed.categorie\n  }\n};"
+      },
+      "id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "name": "Code in JavaScript",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [690, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "filter-condition-1",
+              "leftValue": "={{ $json.score }}",
+              "rightValue": 6,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d4e5f6a7-b8c9-0123-defa-234567890123",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [910, 300]
+    },
+    {
+      "parameters": {
+        "operation": "csv",
+        "options": {}
+      },
+      "id": "e5f6a7b8-c9d0-1234-efab-345678901234",
+      "name": "Convert to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1,
+      "position": [1130, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst path = '/home/node/.n8n/veille/veille_technologique.csv';\n\n// Récupère les données depuis le nœud Code précédent\nconst data = $('Code in JavaScript').item.json;\n\nconst titre = data.titre ?? 'N/A';\nconst lien = data.lien ?? 'N/A';\nconst date = data.date ?? 'N/A';\nconst pertinent = data.pertinent ?? false;\nconst score = data.score ?? 0;\nconst raison = (data.raison ?? 'N/A').replace(/\"/g, \"'\");\nconst categorie = data.categorie ?? 'N/A';\n\nconst header = 'titre,lien,date,pertinent,score,raison,categorie\\n';\nconst ligne = `\"${titre}\",\"${lien}\",\"${date}\",${pertinent},${score},\"${raison}\",\"${categorie}\"\\n`;\n\n// Crée le fichier avec l'en-tête s'il n'existe pas, sinon ajoute une ligne\nif (!fs.existsSync(path)) {\n  fs.writeFileSync(path, header + ligne);\n} else {\n  fs.appendFileSync(path, ligne);\n}\n\nreturn { json: { statut: 'sauvegardé', titre: titre, score: score } };"
+      },
+      "id": "f6a7b8c9-d0e1-2345-fabc-456789012345",
+      "name": "Écriture CSV",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1350, 300]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "RSS Feed Trigger": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Écriture CSV",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "instanceId": "local"
+  },
+  "id": "ai-horizon-scanning-v1",
+  "tags": [
+    {
+      "name": "veille"
+    }
+  ]
+}

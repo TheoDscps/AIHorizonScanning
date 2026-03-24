@@ -1,0 +1,15 @@
+# Variables d'environnement — NE JAMAIS COMMITTER
+.env
+
+# Données n8n locales (si monté en bind mount)
+n8n_data/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+*.swo
