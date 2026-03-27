@@ -1,17 +1,19 @@
 {
   "meta": {
-    "derniere_maj": "2026-03-27T20:08:47.365Z",
-    "total_analyses": 26,
-    "total_pertinents": 2,
-    "score_moyen": 7.5,
+    "derniere_maj": "2026-03-27T20:09:54.216Z",
+    "total_analyses": 36,
+    "total_pertinents": 3,
+    "score_moyen": 7,
     "categories_tech": {
-      "Outil": 2
+      "Outil": 2,
+      "LLM": 1
     },
     "categories_contexte": {
-      "Technologique": 2
+      "Technologique": 2,
+      "Politique": 1
     },
     "pays": {
-      "USA": 2
+      "USA": 3
     }
   },
   "articles": [
@@ -40,6 +42,19 @@
       "categorie_contexte": "Technologique",
       "pays_origine": "USA",
       "acteur_cle": "Telnyx"
+    },
+    {
+      "titre": "Anthropic wins injunction against Trump administration over Defense Department saga",
+      "lien": "https://techcrunch.com/2026/03/26/anthropic-wins-injunction-against-trump-administration-over-defense-department-saga/",
+      "date": "Fri, 27 Mar 2026 01:18:38 +0000",
+      "source": "TechCrunch AI",
+      "pertinent": true,
+      "score": 6,
+      "raison": "Impact politique et économique sur Anthropic, acteur majeur en IA générative, mais peu de détails techniques sur ses produits de programmation",
+      "categorie_tech": "LLM",
+      "categorie_contexte": "Politique",
+      "pays_origine": "USA",
+      "acteur_cle": "Anthropic"
     }
   ]
 }
