@@ -1,31 +1,45 @@
 {
   "meta": {
-    "derniere_maj": "2026-03-27T20:05:21.975Z",
+    "derniere_maj": "2026-03-27T20:08:47.365Z",
     "total_analyses": 26,
     "total_pertinents": 2,
-    "score_moyen": 9,
-    "categories": {
-      "IDE": 2
+    "score_moyen": 7.5,
+    "categories_tech": {
+      "Outil": 2
+    },
+    "categories_contexte": {
+      "Technologique": 2
+    },
+    "pays": {
+      "USA": 2
     }
   },
   "articles": [
     {
-      "titre": "Firecrawl + n8n: real-time web data for your AI workflows",
-      "lien": "https://blog.n8n.io/firecrawl-n8n-real-time-web-data-for-your-ai-workflows/",
-      "date": "Thu, 26 Mar 2026 13:51:48 GMT",
+      "titre": "Telnyx package compromised on PyPI",
+      "lien": "https://www.aikido.dev/blog/telnyx-pypi-compromised-teampcp-canisterworm",
+      "date": "Fri, 27 Mar 2026 18:13:57 +0000",
+      "source": "HackerNews",
       "pertinent": true,
-      "score": 9,
-      "raison": "Article sur Cursor, un IDE AI-native majeur, et son financement pour développer des fonctionnalités d'IA avancées pour la programmation.",
-      "categorie": "IDE"
+      "score": 8,
+      "raison": "Compromission de package PyPI affectant la sécurité des développeurs et démontrant les risques de la chaîne d'approvisionnement logicielle",
+      "categorie_tech": "Outil",
+      "categorie_contexte": "Technologique",
+      "pays_origine": "USA",
+      "acteur_cle": "Telnyx / PyPI"
     },
     {
-      "titre": "Firecrawl + n8n: real-time web data for your AI workflows",
-      "lien": "https://blog.n8n.io/firecrawl-n8n-real-time-web-data-for-your-ai-workflows/",
-      "date": "Thu, 26 Mar 2026 13:51:48 GMT",
+      "titre": "Telnyx Python SDK: Supply Chain Security Notice",
+      "lien": "https://telnyx.com/resources/telnyx-python-sdk-supply-chain-security-notice-march-2026",
+      "date": "Fri, 27 Mar 2026 17:58:52 +0000",
+      "source": "HackerNews",
       "pertinent": true,
-      "score": 9,
-      "raison": "Article sur Cursor, un IDE AI-native majeur, avec focus sur le financement et le développement de features IA pour la programmation.",
-      "categorie": "IDE"
+      "score": 7,
+      "raison": "Notice de sécurité concernant une chaîne d'approvisionnement logicielle pour un SDK Python, relevant des enjeux de sécurité des dépendances en programmation",
+      "categorie_tech": "Outil",
+      "categorie_contexte": "Technologique",
+      "pays_origine": "USA",
+      "acteur_cle": "Telnyx"
     }
   ]
 }
