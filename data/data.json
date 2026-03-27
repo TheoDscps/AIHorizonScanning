@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "derniere_maj": "2026-03-27T19:00:21.230Z",
+    "total_analyses": 2,
+    "total_pertinents": 2,
+    "score_moyen": 9,
+    "categories": {
+      "IDE": 2
+    }
+  },
+  "articles": [
+    {
+      "titre": "Firecrawl + n8n: real-time web data for your AI workflows",
+      "lien": "https://blog.n8n.io/firecrawl-n8n-real-time-web-data-for-your-ai-workflows/",
+      "date": "Thu, 26 Mar 2026 13:51:48 GMT",
+      "pertinent": true,
+      "score": 9,
+      "raison": "Article sur Cursor, un IDE AI-native majeur, et son financement pour développer des fonctionnalités d'IA avancées pour la programmation.",
+      "categorie": "IDE"
+    },
+    {
+      "titre": "Firecrawl + n8n: real-time web data for your AI workflows",
+      "lien": "https://blog.n8n.io/firecrawl-n8n-real-time-web-data-for-your-ai-workflows/",
+      "date": "Thu, 26 Mar 2026 13:51:48 GMT",
+      "pertinent": true,
+      "score": 9,
+      "raison": "Article sur Cursor, un IDE AI-native majeur, avec focus sur le financement et le développement de features IA pour la programmation.",
+      "categorie": "IDE"
+    }
+  ]
+}
